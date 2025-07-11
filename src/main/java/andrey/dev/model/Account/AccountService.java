@@ -23,7 +23,8 @@ public class AccountService {
     public AccountService(UserService userService) {
         this.userService = userService;
     }
-
+    //после очередного фикса очередного метода, потому что там может выпасть NullPointerException я понял ,что
+    //не стоило игнарировать идею возращать Optional ,а не Account
     public Account createAccount(int userId) {
         try {
             userService.searchUserByUserId(userId);
