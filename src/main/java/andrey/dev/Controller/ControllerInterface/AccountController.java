@@ -4,6 +4,7 @@ import andrey.dev.model.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import static andrey.dev.UserInterface.Constants.*;
@@ -25,6 +26,8 @@ public class AccountController implements Controller {
             model.getAccountService().createAccount(scanner.nextInt());
         } catch (IllegalArgumentException illegalArgumentException) {
             System.out.println(MASSAGE_ERROR_OF_WRONG_USER_ID);
+        } finally {
+            scanner.nextLine();
         }
     }
 
@@ -32,7 +35,13 @@ public class AccountController implements Controller {
         System.out.println(MESSAGE_TO_INPUT_ACCOUNT_ID);
         int accountId = scanner.nextInt();
         System.out.println(MESSAGE_TO_INPUT_COUNT_OF_MONEY_TO_DEPOSIT);
-        model.getAccountService().depositOnAccount(accountId, scanner.nextInt());
+        try {
+            model.getAccountService().depositOnAccount(accountId, scanner.nextInt());
+        } catch (NoSuchElementException noSuchElementException) {
+            System.out.println(ERROR_NO_SUCH_ACCOUNT);
+        } finally {
+            scanner.nextLine();
+        }
     }
 
     public void withdrawFromAccountWithController() {
@@ -44,6 +53,10 @@ public class AccountController implements Controller {
         } catch (IllegalArgumentException illegalArgumentException) {
             System.out.printf(FORM_FOR_NOT_ENOUGH_MONEY_ON_ACCOUNT_MASSAGE
                     , model.getAccountService().getAmountOfMoney(accountId));
+        } catch (NoSuchElementException noSuchElementException) {
+            System.out.println(ERROR_NO_SUCH_ACCOUNT);
+        } finally {
+            scanner.nextLine();
         }
     }
 
@@ -58,6 +71,10 @@ public class AccountController implements Controller {
         } catch (IllegalArgumentException illegalArgumentException) {
             System.out.printf(FORM_FOR_NOT_ENOUGH_MONEY_ON_ACCOUNT_MASSAGE
                     , model.getAccountService().getAmountOfMoney(sourceAccountId));
+        } catch (NoSuchElementException noSuchElementException) {
+            System.out.println(ERROR_NO_SUCH_ACCOUNT);
+        } finally {
+            scanner.nextLine();
         }
     }
 
@@ -69,6 +86,10 @@ public class AccountController implements Controller {
             model.getAccountService().closeAccount(scanner.nextInt(), userId);
         } catch (IllegalArgumentException illegalArgumentException) {
             System.out.println(MASSAGE_ERROR_OF_WRONG_USER_ID);
+        } catch (NoSuchElementException noSuchElementException) {
+            System.out.println(ERROR_NO_ACCOUNTS_FOR_CLOSE);
+        } finally {
+            scanner.nextLine();
         }
     }
 

@@ -14,10 +14,13 @@ public class Constants {
     public final static String MASSAGE_TO_INPUT_IF_OF_RECIPIENT_ACCOUNT_FOR_TRANSFER = "Input id of recipient account ";
     public final static String MASSAGE_TO_INPUT_COUNT_OF_MONEY_TO_TRANSFER = "Input count of money to transfer";
     public final static String MASSAGE_ERROR_OF_WRONG_USER_ID = "Such user id don't exist";
+    public final static String ERROR_NO_SUCH_ACCOUNT = "you haven't such account";
+    public final static String ERROR_NO_ACCOUNTS_FOR_CLOSE = "You cant close this account ";
     //UserController
-    public final static String MASSAGE_TO_INPUT_LOGIN_FOR_USER  = "Input login for user:";
+    public final static String MASSAGE_TO_INPUT_LOGIN_FOR_USER = "Input login for user:";
     public final static String MESSAGE_OF_ERROR_IN_USER_LOGIN = "Such login already exist";
     //ControllerService
+
     public static final String MASSAGE_OF_MENU = "USER_CREATE\n" +
             "SHOW_ALL_USERS\n" +
             "ACCOUNT_CREATE\n" +

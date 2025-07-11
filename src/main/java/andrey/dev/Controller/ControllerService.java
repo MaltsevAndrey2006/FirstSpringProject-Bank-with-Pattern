@@ -28,13 +28,15 @@ public class ControllerService {
         System.out.println(MASSAGE_TO_INPUT_COMMAND);
         Commands command;
         try {
-             command = Commands.valueOf(scanner.nextLine());
+
+            command = Commands.valueOf(scanner.nextLine());
+
         } catch (IllegalArgumentException illegalArgumentException) {
-            command=Commands.ERROR;
+            command = Commands.ERROR;
             System.out.println(COMMAND_ERROR);
         }
-        switch (command){
-            case USER_CREATE ->userController.createUserWithController() ;
+        switch (command) {
+            case USER_CREATE -> userController.createUserWithController();
             case ACCOUNT_CLOSE -> accountController.closeAccountWithController();
             case ACCOUNT_CREATE -> accountController.createAccountWithController();
             case SHOW_ALL_USERS -> userController.showALLUsersWithController();

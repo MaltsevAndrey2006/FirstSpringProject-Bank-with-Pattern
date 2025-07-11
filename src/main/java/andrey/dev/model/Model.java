@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class Model {
-    private final UserService userService ;
-    private final AccountService accountService ;
+    private final UserService userService;
+    private final AccountService accountService;
 
     @Autowired
     public Model(UserService userService, AccountService accountService) {
