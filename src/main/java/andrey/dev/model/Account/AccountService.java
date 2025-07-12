@@ -24,16 +24,13 @@ public class AccountService {
         this.userService = userService;
     }
 
-    public Account createAccount(int userId) {
-        try {
+    public Account createAccount(int userId) throws IllegalArgumentException {
             userService.searchUserByUserId(userId);
             Account account = new Account(concurrentAccountId, userId, startMoneyAmount);
             mapAccount.put(concurrentAccountId++, account);
             userService.searchUserByUserId(userId).addToAccountList(account);
             return account;
-        } catch (IllegalArgumentException illegalArgumentException) {
-            throw new IllegalArgumentException();
-        }
+
     }
 
     public void depositOnAccount(int accountId, double count) {
